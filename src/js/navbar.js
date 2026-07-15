@@ -49,13 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </button>
 
           <!-- RTL Toggle -->
-          <button class="m-toggle-btn m-rtl-toggle" id="rtlToggleBtn" aria-label="Toggle text direction RTL/LTR" title="Toggle RTL/LTR">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M10 4H6C4.34 4 3 5.34 3 7s1.34 3 3 3h1v6h2V4z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              <line x1="13" y1="4" x2="13" y2="20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-              <path d="M17 8l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
+          <button class="m-toggle-btn m-rtl-toggle" id="rtlToggleBtn" aria-label="Toggle text direction RTL/LTR" title="Toggle RTL/LTR">RTL</button>
 
           <!-- Cart -->
           <button class="m-icon-btn" id="cartTriggerBtn" aria-label="Shopping Cart">

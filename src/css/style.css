@@ -1257,9 +1257,18 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 [data-theme="dark"] .m-theme-toggle .m-icon-sun { display: none; }
 [data-theme="dark"] .m-theme-toggle .m-icon-moon { display: block; }
 
-/* RTL toggle active state */
+/* RTL toggle button & active state */
+.m-rtl-toggle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  width: auto;
+  min-width: 32px;
+  padding: 0 6px;
+}
 .m-rtl-toggle.active {
-  color: var(--accent);
+  color: #fff;
   opacity: 1;
 }
 
