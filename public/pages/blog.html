@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="root-path" content="../../">
+  <meta name="description" content="Meridian Pharmacy Blog — stay informed with medical articles, daily wellness tips, and wellness suggestions.">
+  <title>Meridian — Health &amp; Wellness Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../src/css/style.css">
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <main class="page-main">
+    <div class="page-wrap">
+
+      <!-- Hero -->
+      <div class="page-hero" style="border-bottom: 1px solid var(--line); padding-bottom: 48px; margin-bottom: 56px; position:relative;">
+        <span class="section-label">Publications</span>
+        <h1 class="page-title" style="font-size:clamp(2.2rem, 4.5vw, 3.2rem); font-weight:800; letter-spacing:-0.03em; margin-bottom:16px;">Health &amp; Wellness Blog</h1>
+        <p class="page-subtitle" style="font-size:1rem; color:var(--ink-soft); line-height:1.7; max-width:52ch;">Stay up-to-date with doctor-reviewed clinical advice, pediatric skincare guides, and blood pressure monitoring rules.</p>
+        <span aria-hidden="true" style="position:absolute; bottom:20px; right:0; font-size:4rem; font-weight:700; color:var(--accent); opacity:0.06; font-family:'Inter',sans-serif;">+</span>
+      </div>
+
+      <!-- Filters & Search -->
+      <div style="display:flex;flex-direction:column;gap:24px;margin-bottom:40px;">
+        <div class="m-search-wrap">
+          <svg class="m-search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <input type="text" id="blogSearchInput" class="m-input" placeholder="Search health articles, side effects, tips…" style="padding-left:42px;">
+        </div>
+
+        <div class="m-filter-bar">
+          <button data-category="all" class="m-filter-btn active">All Articles</button>
+          <button data-category="medicines" class="m-filter-btn">Medicines</button>
+          <button data-category="baby-care" class="m-filter-btn">Baby Care</button>
+          <button data-category="wellness" class="m-filter-btn">Daily Wellness</button>
+        </div>
+      </div>
+
+      <!-- Blog Grid -->
+      <div id="blogGridContainer" class="m-blog-grid">
+        <!-- Rendered dynamically by blog.js -->
+      </div>
+
+      <!-- Editorial Advisory Panel -->
+      <section class="reveal" style="margin-top: 80px; border-top: 1px solid var(--line-strong); padding-top: 64px; margin-bottom: 64px;">
+        <span class="section-label">Medical Advisory Board</span>
+        <h2 style="font-size:1.75rem; font-weight:800; letter-spacing:-0.03em; margin-bottom:12px; color:var(--ink);">Our Scientific Advisory Panel</h2>
+        <p style="font-size:0.9rem; color:var(--ink-soft); max-width:62ch; line-height:1.6; margin-bottom:44px;">All wellness articles and guides published on Meridian are reviewed by board-certified clinicians to ensure strict scientific accuracy and compliance.</p>
+        
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:24px;">
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="height:240px; overflow:hidden; border-radius:2px; border:1px solid var(--line);">
+              <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=80" alt="Dr. Sarah Jenkins" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <div>
+              <h4 style="font-size:0.95rem; font-weight:700; color:var(--ink); margin-bottom:2px;">Dr. Sarah Jenkins, MD</h4>
+              <p style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; color:var(--accent); font-weight:600; text-transform:uppercase; margin-bottom:6px;">Endocrinology Lead</p>
+              <p style="font-size:0.78rem; color:var(--ink-soft); line-height:1.45;">Over 12 years of clinical research experience in hormone regulation and diabetic care programs.</p>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="height:240px; overflow:hidden; border-radius:2px; border:1px solid var(--line);">
+              <img src="https://images.unsplash.com/photo-1594824813573-246434de83fb?auto=format&fit=crop&w=500&q=80" alt="Marcus Brody, PharmD" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <div>
+              <h4 style="font-size:0.95rem; font-weight:700; color:var(--ink); margin-bottom:2px;">Marcus Brody, PharmD</h4>
+              <p style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; color:var(--accent); font-weight:600; text-transform:uppercase; margin-bottom:6px;">Pharmacological Chemistry</p>
+              <p style="font-size:0.78rem; color:var(--ink-soft); line-height:1.45;">Chief of clinical safety audits specializing in drug-drug interactions and critical dosing.</p>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="height:240px; overflow:hidden; border-radius:2px; border:1px solid var(--line);">
+              <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=500&q=80" alt="David Vance, PharmD" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+            <div>
+              <h4 style="font-size:0.95rem; font-weight:700; color:var(--ink); margin-bottom:2px;">David Vance, PharmD</h4>
+              <p style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; color:var(--accent); font-weight:600; text-transform:uppercase; margin-bottom:6px;">Cardiovascular Therapeutics</p>
+              <p style="font-size:0.78rem; color:var(--ink-soft); line-height:1.45;">Advises on chronic hypertension programs, sodium-diet adjustments, and blood pressure monitoring protocols.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter Subscription Form -->
+      <section class="reveal m-news-banner" style="background:var(--accent); color:#fff; padding:44px 38px; border-radius:2px; margin-bottom: 80px; display:flex; justify-content:space-between; align-items:center; gap:32px; flex-wrap:wrap; position:relative; overflow:hidden;">
+        <span aria-hidden="true" style="position:absolute; right:-20px; bottom:-30px; font-size:120px; font-weight:800; color:rgba(255,255,255,0.06); font-family:sans-serif;">+</span>
+        <div style="flex:1; min-width:280px; z-index:2;">
+          <h3 style="font-size:1.35rem; font-weight:700; margin-bottom:6px; letter-spacing:-0.015em;">Subscribe to Clinical Insights</h3>
+          <p style="font-size:0.88rem; color:rgba(255,255,255,0.85); line-height:1.6; max-width:48ch;">Receive weekly updates verified by medical practitioners regarding seasonal wellness advice, dosage guidelines, and safe medication storage.</p>
+        </div>
+        <div style="z-index:2; flex:1; min-width:280px; max-width:440px;">
+          <form id="blogNewsletterForm" style="display:flex; gap:12px; width:100%;">
+            <input type="email" id="blogNewsletterEmail" class="m-input" placeholder="name@domain.com" required style="flex:1; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.25); color:#fff;">
+            <button type="submit" class="btn-primary" style="background:#fff; color:var(--accent); border-color:#fff; font-weight:600; padding:12px 24px;">Subscribe</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Clinical Trust Section -->
+      <section class="reveal" style="margin-top: 80px; border-top: 1.5px dashed var(--accent); padding-top: 48px; margin-bottom: 56px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px;">
+          <div style="display:flex; gap:16px;">
+            <div style="width:44px; height:44px; border-radius:50%; background:var(--accent-light); color:var(--accent); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <h4 style="font-size:0.95rem; font-weight:700; margin-bottom:4px; color:var(--ink);">HIPAA Secure Data</h4>
+              <p style="font-size:0.82rem; color:var(--ink-soft); line-height:1.5;">Every prescription scan and patient file is encrypted under medical standards.</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:16px;">
+            <div style="width:44px; height:44px; border-radius:50%; background:var(--accent-light); color:var(--accent); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div>
+              <h4 style="font-size:0.95rem; font-weight:700; margin-bottom:4px; color:var(--ink);">FDA Approved Sourcing</h4>
+              <p style="font-size:0.82rem; color:var(--ink-soft); line-height:1.5;">We coordinate strictly with certified manufacturers to dispatch authentic stocks.</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:16px;">
+            <div style="width:44px; height:44px; border-radius:50%; background:var(--accent-light); color:var(--accent); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            </div>
+            <div>
+              <h4 style="font-size:0.95rem; font-weight:700; margin-bottom:4px; color:var(--ink);">Pharmacist Advisory</h4>
+              <p style="font-size:0.82rem; color:var(--ink-soft); line-height:1.5;">Got side effects queries? Talk to our on-duty pharmacists instantly.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Help & Refills Banner -->
+      <section class="reveal m-refills-banner" style="background:var(--accent); color:#fff; padding:44px 38px; border-radius:2px; margin-bottom: 72px; display:flex; justify-content:space-between; align-items:center; gap:32px; flex-wrap:wrap; position:relative; overflow:hidden;">
+        <span aria-hidden="true" style="position:absolute; right:-20px; bottom:-30px; font-size:120px; font-weight:800; color:rgba(255,255,255,0.06); font-family:sans-serif;">+</span>
+        <div style="flex:1; min-width:280px; z-index:2;">
+          <h3 style="font-size:1.35rem; font-weight:700; margin-bottom:6px; letter-spacing:-0.015em;">Need Automatic Monthly Refills?</h3>
+          <p style="font-size:0.88rem; color:rgba(255,255,255,0.85); line-height:1.6; max-width:54ch;">Submit your healthcare schedule in our portal to set up automated shipping reminders and consult checks.</p>
+        </div>
+        <div style="z-index:2; display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="../auth/signup.html" class="m-btn solid" style="background:#fff; color:var(--accent); border-color:#fff; font-weight:600; padding:12px 24px;">Setup Refills Now</a>
+          <a href="contact.html" class="m-btn" style="border-color:rgba(255,255,255,0.4); color:#fff; font-weight:500; padding:12px 24px;">Contact Support</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="../../src/js/products.js"></script>
+  <script src="../../src/js/navbar.js"></script>
+  <script src="../../src/js/auth.js"></script>
+  <script src="../../src/js/blog.js"></script>
+</body>
+</html>

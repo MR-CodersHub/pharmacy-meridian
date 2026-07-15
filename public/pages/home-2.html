@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="root-path" content="../../">
+  <meta name="description" content="Meridian Pharmacy — 24/7 Digital Health Hub with clinical guidance and automated refills.">
+  <title>Meridian — 24/7 Digital-First Pharmacy Care</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../src/css/style.css">
+  <style>
+    .chat-console {
+      border: 1px solid var(--line-strong);
+      background: var(--card);
+      display: flex;
+      flex-direction: column;
+      height: 440px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+    }
+    .chat-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bone);
+    }
+    .chat-messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      scrollbar-width: thin;
+    }
+    .chat-msg {
+      display: flex;
+      gap: 12px;
+      max-width: 85%;
+    }
+    .chat-msg.bot {
+      align-self: flex-start;
+    }
+    .chat-msg.user {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+    .chat-bubble {
+      padding: 12px 16px;
+      font-size: 0.82rem;
+      border: 1.5px solid var(--line);
+      line-height: 1.5;
+    }
+    .chat-msg.bot .chat-bubble {
+      background: var(--bone);
+      color: var(--ink);
+    }
+    .chat-msg.user .chat-bubble {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .chat-avatar {
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--line-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      background: var(--card);
+      flex-shrink: 0;
+    }
+    .chat-msg.user .chat-avatar {
+      background: var(--ink);
+      color: #fff;
+      border-color: var(--ink);
+    }
+    .chat-input-row {
+      display: flex;
+      border-top: 1px solid var(--line);
+      background: var(--card);
+    }
+    .chat-input-row input {
+      flex: 1;
+      border: none;
+      padding: 16px 20px;
+      outline: none;
+      font-size: 0.88rem;
+      background: transparent;
+      color: var(--ink);
+    }
+    .chat-send-btn {
+      border: none;
+      border-left: 1px solid var(--line);
+      background: var(--ink);
+      color: var(--bone);
+      padding: 0 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+    .chat-send-btn:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+    [dir="rtl"] .chat-msg.user {
+      flex-direction: row;
+    }
+    [dir="rtl"] .chat-send-btn {
+      border-left: none;
+      border-right: 1px solid var(--line);
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <main class="page-main" style="padding-top:108px;">
+    <div class="wrap">
+      
+      <!-- Hero Grid: Side-by-side content and chat helper -->
+      <section class="hero-grid" style="margin-bottom: 80px; align-items: stretch; min-height: auto;">
+        <!-- Left details -->
+        <div style="display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:20px; padding: 20px 0;">
+          <span class="m-rx-badge"><span class="m-rx-cross">+</span> 24/7 Digital Health Hub</span>
+          <h1 style="font-size:clamp(2.2rem, 4.5vw, 3.4rem); font-weight:800; line-height:1.1; letter-spacing:-0.03em;">
+            Clinical Guidance Whenever You Need It.
+          </h1>
+          <p style="font-size:0.98rem; color:var(--ink-soft); line-height:1.7; max-width:44ch; margin-bottom: 12px;">
+            Skip the pharmacy lines. Meridian brings verified drug interaction checking, 24/7 pharmacist consultation, and temperature-sealed delivery straight to your browser.
+          </p>
+          
+          <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:12px;">
+            <span class="m-pill-tag green">Human Reviews</span>
+            <span class="m-pill-tag green">HIPAA Secure</span>
+            <span class="m-pill-tag green">Licensed Rx</span>
+          </div>
+
+          <a href="#pharmacist-chat" class="btn-primary">
+            Start Live Consultation
+          </a>
+        </div>
+
+        <!-- Right Chat Console -->
+        <div style="display:flex; flex-direction:column; justify-content:center; padding: 20px 0;">
+          <div class="chat-console" id="pharmacist-chat" style="border-radius:4px; overflow:hidden;">
+            <!-- Chat Header -->
+            <div class="chat-header">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <span class="m-status-live" style="font-size:0.68rem; font-weight:600;">Dr. Marcus, RPh (AI Assistant)</span>
+              </div>
+              <span class="m-rx-badge" style="font-size:0.55rem; padding: 2px 8px;">SECURE CHANNEL</span>
+            </div>
+
+            <!-- Chat Messages -->
+            <div class="chat-messages" id="chatConsoleMessages">
+              <div class="chat-msg bot">
+                <div class="chat-avatar">M</div>
+                <div class="chat-bubble" style="border-radius: 2px 14px 14px 14px;">
+                  Hello! I am Dr. Marcus's AI clinical guide. How can I help you today? You can query me on:
+                  <ul style="margin-top:8px;padding-left:20px;list-style:disc;display:flex;flex-direction:column;gap:4px;">
+                    <li>Medication side effects</li>
+                    <li>Prescription uploads</li>
+                    <li>Delivery dispatch window</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Chat Input -->
+            <form id="chatConsoleInputForm" class="chat-input-row">
+              <input type="text" id="chatConsoleMessageInput" placeholder="Type your query here..." required autocomplete="off">
+              <button type="submit" class="chat-send-btn">SEND</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Digital Meridian Grid -->
+      <section class="reveal m-section-rx" style="border-top: 1px solid var(--line-strong); padding-top: 64px; margin-bottom: 72px;">
+        <span class="section-label">Features</span>
+        <h2 style="font-size:clamp(1.8rem, 3vw, 2.4rem); font-weight:800; letter-spacing:-0.025em; margin-bottom:44px; text-align:left;">Why Digital Meridian?</h2>
+        
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+          <div class="m-rx-panel">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--accent);display:block;margin-bottom:12px;">[01]</span>
+            <h4 style="font-size:1.05rem;font-weight:700;margin-bottom:8px;letter-spacing:-0.015em;">Emergency Meds</h4>
+            <p style="font-size:0.85rem;color:var(--ink-soft);line-height:1.6;">Critical medications delivered in temperature-sealed packs under 4 hours.</p>
+          </div>
+          <div class="m-rx-panel">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--accent);display:block;margin-bottom:12px;">[02]</span>
+            <h4 style="font-size:1.05rem;font-weight:700;margin-bottom:8px;letter-spacing:-0.015em;">Refill Reminders</h4>
+            <p style="font-size:0.85rem;color:var(--ink-soft);line-height:1.6;">Automated reminders when chronic prescriptions are due for review.</p>
+          </div>
+          <div class="m-rx-panel">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--accent);display:block;margin-bottom:12px;">[03]</span>
+            <h4 style="font-size:1.05rem;font-weight:700;margin-bottom:8px;letter-spacing:-0.015em;">Interaction Checks</h4>
+            <p style="font-size:0.85rem;color:var(--ink-soft);line-height:1.6;">Safety reports on pill mixtures validated by licensed clinicians.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Clinical Trust Section -->
+      <section class="reveal" style="margin-top: 80px; border-top: 1.5px dashed var(--accent); padding-top: 48px; margin-bottom: 56px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px;">
+          <div style="display:flex; gap:16px;">
+            <div style="width:44px; height:44px; border-radius:50%; background:var(--accent-light); color:var(--accent); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <h4 style="font-size:0.95rem; font-weight:700; margin-bottom:4px; color:var(--ink);">HIPAA Secure Data</h4>
+              <p style="font-size:0.82rem; color:var(--ink-soft); line-height:1.5;">Every prescription scan and patient file is encrypted under medical standards.</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:16px;">
+            <div style="width:44px; height:44px; border-radius:50%; background:var(--accent-light); color:var(--accent); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div>
+              <h4 style="font-size:0.95rem; font-weight:700; margin-bottom:4px; color:var(--ink);">FDA Approved Sourcing</h4>
+              <p style="font-size:0.82rem; color:var(--ink-soft); line-height:1.5;">We coordinate strictly with certified manufacturers to dispatch authentic stocks.</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:16px;">
+            <div style="width:44px; height:44px; border-radius:50%; background:var(--accent-light); color:var(--accent); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            </div>
+            <div>
+              <h4 style="font-size:0.95rem; font-weight:700; margin-bottom:4px; color:var(--ink);">Pharmacist Advisory</h4>
+              <p style="font-size:0.82rem; color:var(--ink-soft); line-height:1.5;">Got side effects queries? Talk to our on-duty pharmacists instantly.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Help & Refills Banner -->
+      <section class="reveal m-refills-banner" style="background:var(--accent); color:#fff; padding:44px 38px; border-radius:2px; margin-bottom: 72px; display:flex; justify-content:space-between; align-items:center; gap:32px; flex-wrap:wrap; position:relative; overflow:hidden;">
+        <span aria-hidden="true" style="position:absolute; right:-20px; bottom:-30px; font-size:120px; font-weight:800; color:rgba(255,255,255,0.06); font-family:sans-serif;">+</span>
+        <div style="flex:1; min-width:280px; z-index:2;">
+          <h3 style="font-size:1.35rem; font-weight:700; margin-bottom:6px; letter-spacing:-0.015em;">Need Automatic Monthly Refills?</h3>
+          <p style="font-size:0.88rem; color:rgba(255,255,255,0.85); line-height:1.6; max-width:54ch;">Submit your healthcare schedule in our portal to set up automated shipping reminders and consult checks.</p>
+        </div>
+        <div style="z-index:2; display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="../auth/signup.html" class="m-btn solid" style="background:#fff; color:var(--accent); border-color:#fff; font-weight:600; padding:12px 24px;">Setup Refills Now</a>
+          <a href="contact.html" class="m-btn" style="border-color:rgba(255,255,255,0.4); color:#fff; font-weight:500; padding:12px 24px;">Contact Support</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="../../src/js/products.js"></script>
+  <script src="../../src/js/navbar.js"></script>
+  <script src="../../src/js/auth.js"></script>
+
+  <!-- Interactive Chat Logic -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("chatConsoleInputForm");
+      const input = document.getElementById("chatConsoleMessageInput");
+      const container = document.getElementById("chatConsoleMessages");
+
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const query = input.value.trim();
+          if (!query) return;
+
+          renderMessage(query, "user");
+          input.value = "";
+
+          setTimeout(() => {
+            let reply = "I understand your query. For detailed clinical concerns, please upload your prescription in the dashboard, or request a call from a human pharmacist.";
+            const lower = query.toLowerCase();
+
+            if (lower.includes("side effect") || lower.includes("pain") || lower.includes("tablet")) {
+              reply = "Standard medications like Paracetamol are safe when adhering strictly to guidelines (maximum 4000mg/day). If you experience severe reactions, consult our team immediately.";
+            } else if (lower.includes("upload") || lower.includes("prescription")) {
+              reply = "You can upload files directly in your Patient Cabinet dashboard. Simply upload a clear PDF or photo scan, and our pharmacists will review it in under 30 minutes.";
+            } else if (lower.includes("delivery") || lower.includes("tracking")) {
+              reply = "Standard orders deliver within 2–4 hours. Once our clinical team approves your prescription, you can view live tracking in your dashboard.";
+            }
+
+            renderMessage(reply, "bot");
+          }, 800);
+        });
+      }
+
+      function renderMessage(text, sender) {
+        const msgDiv = document.createElement("div");
+        msgDiv.className = `chat-msg ${sender}`;
+        
+        const avatarChar = sender === "bot" ? "M" : "U";
+        const avatar = `<div class="chat-avatar">${avatarChar}</div>`;
+        const bubble = `<div class="chat-bubble" style="border-radius: ${sender === 'bot' ? '2px 14px 14px 14px' : '14px 2px 14px 14px'}">${text}</div>`;
+
+        msgDiv.innerHTML = sender === "bot" ? (avatar + bubble) : (bubble + avatar);
+        container.appendChild(msgDiv);
+        container.scrollTop = container.scrollHeight;
+      }
+    });
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

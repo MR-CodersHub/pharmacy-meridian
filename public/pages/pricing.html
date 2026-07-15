@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="root-path" content="../../">
+  <meta name="description" content="Meridian Care Memberships — unlock premium benefits, priority pharmacist consultations, and monthly refill logs.">
+  <title>Meridian — Healthcare Membership Plans</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../src/css/style.css">
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <main class="page-main">
+    <div class="wrap">
+      
+      <!-- Hero -->
+      <div class="page-hero" style="border-bottom: 1px solid var(--line); padding-bottom: 48px; margin-bottom: 56px; position:relative;">
+        <span class="section-label">Memberships</span>
+        <h1 class="page-title" style="font-size:clamp(2.2rem, 4.5vw, 3.2rem); font-weight:800; letter-spacing:-0.03em; margin-bottom:16px;">Healthcare Plans</h1>
+        <p class="page-subtitle" style="font-size:1rem; color:var(--ink-soft); line-height:1.7; max-width:52ch;">Unlock premium clinical benefits, priority pharmacist hotlines, and automatic recurring refills.</p>
+        <span aria-hidden="true" style="position:absolute; bottom:20px; right:0; font-size:4rem; font-weight:700; color:var(--accent); opacity:0.06; font-family:'Inter',sans-serif;">+</span>
+      </div>
+
+      <!-- Monthly/Annual Toggle -->
+      <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:56px;">
+        <span style="font-size:0.88rem;color:var(--ink-soft);">Monthly billing</span>
+        <button id="pricingPeriodToggle" aria-label="Toggle pricing period" style="width:48px;height:24px;border:1.5px solid var(--ink);background:var(--bone);position:relative;padding:0;cursor:pointer;outline:none;border-radius:12px;">
+          <span id="pricingPeriodDot" style="position:absolute;top:2px;left:2px;width:18px;height:18px;background:var(--ink);transition:transform 0.2s;border-radius:50%;"></span>
+        </button>
+        <span style="font-size:0.88rem;color:var(--ink-soft);display:flex;align-items:center;">Yearly billing <span class="m-pill-tag green" style="margin-left:8px;font-size:0.58rem;padding:2px 8px;">SAVE 20%</span></span>
+      </div>
+
+      <!-- Pricing Cards Grid -->
+      <div class="m-pricing-grid reveal">
+        <!-- Silver Plan -->
+        <div class="m-pricing-card">
+          <span class="m-pricing-plan">Care Silver</span>
+          <div class="m-pricing-price">$0</div>
+          <div class="m-pricing-period">/ forever</div>
+          <p class="m-pricing-desc">Perfect for patients with occasional medicine requirements and baseline health logs.</p>
+          
+          <ul class="m-pricing-features">
+            <li class="m-pricing-feature on">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Standard 48h Home Delivery</span>
+            </li>
+            <li class="m-pricing-feature on">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Prescription Upload Reviews</span>
+            </li>
+            <li class="m-pricing-feature off">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              <span>24/7 Priority Pharmacist Hotline</span>
+            </li>
+            <li class="m-pricing-feature off">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              <span>Automatic Monthly Refill Reminders</span>
+            </li>
+          </ul>
+
+          <button onclick="window.showNotificationModal('Silver Plan Selected', 'You have successfully signed up for our Free Care Silver plan.')" class="btn-outline" style="width:100%;justify-content:center;margin-top:12px;">
+            Choose Free Care
+          </button>
+        </div>
+
+        <!-- Gold Plan -->
+        <div class="m-pricing-card featured" style="border-color: var(--accent); border-width: 1.5px;">
+          <span class="m-pricing-featured-badge" style="background:var(--accent);">RECOMMENDED</span>
+          <span class="m-pricing-plan">Care Gold</span>
+          <div class="m-pricing-price" id="priceGold">$9.99</div>
+          <div class="m-pricing-period" id="periodGold">/ month</div>
+          <p class="m-pricing-desc">Comprehensive support for active individuals &amp; chronic care management.</p>
+          
+          <ul class="m-pricing-features">
+            <li class="m-pricing-feature on">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Same-Day Home Delivery (4 Hours)</span>
+            </li>
+            <li class="m-pricing-feature on">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>24/7 Virtual Pharmacist Chat</span>
+            </li>
+            <li class="m-pricing-feature on">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Monthly Refill Automation Reminders</span>
+            </li>
+            <li class="m-pricing-feature off">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              <span>Direct Doctor Office Consult Calls</span>
+            </li>
+          </ul>
+
+          <button onclick="window.showNotificationModal('Gold Plan Selected', 'Thank you! Redirecting to secure billing for Care Gold subscription...')" class="btn-primary" style="width:100%;justify-content:center;margin-top:12px;">
+            Subscribe to Gold
+          </button>
+        </div>
+
+        <!-- Platinum Plan -->
+        <div class="m-pricing-card">
+          <span class="m-pricing-plan">Care Platinum</span>
+          <div class="m-pricing-price" id="pricePlat">$24.99</div>
+          <div class="m-pricing-period" id="periodPlat">/ month</div>
+          <p class="m-pricing-desc">Complete healthcare package for families and heavy prescription users.</p>
+          
+          <ul class="m-pricing-features">
+            <li class="m-pricing-feature on">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Priority Instant Courier Delivery</span>
+            </li>
+            <li class="m-pricing-feature on">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Unlimited Video/Call Consults</span>
+            </li>
+            <li class="m-pricing-feature on">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Direct Doctor Office Coordination</span>
+            </li>
+            <li class="m-pricing-feature on">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Free Quarterly In-Store Screenings</span>
+            </li>
+          </ul>
+
+          <button onclick="window.showNotificationModal('Platinum Plan Selected', 'Thank you! Redirecting to secure billing for Care Platinum subscription...')" class="btn-outline" style="width:100%;justify-content:center;margin-top:12px;">
+            Subscribe to Platinum
+          </button>
+        </div>
+      </div>
+
+      <!-- Clinical Trust Section -->
+      <section class="reveal" style="margin-top: 80px; border-top: 1.5px dashed var(--accent); padding-top: 48px; margin-bottom: 56px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px;">
+          <div style="display:flex; gap:16px;">
+            <div style="width:44px; height:44px; border-radius:50%; background:var(--accent-light); color:var(--accent); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <h4 style="font-size:0.95rem; font-weight:700; margin-bottom:4px; color:var(--ink);">HIPAA Secure Data</h4>
+              <p style="font-size:0.82rem; color:var(--ink-soft); line-height:1.5;">Every prescription scan and patient file is encrypted under medical standards.</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:16px;">
+            <div style="width:44px; height:44px; border-radius:50%; background:var(--accent-light); color:var(--accent); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div>
+              <h4 style="font-size:0.95rem; font-weight:700; margin-bottom:4px; color:var(--ink);">FDA Approved Sourcing</h4>
+              <p style="font-size:0.82rem; color:var(--ink-soft); line-height:1.5;">We coordinate strictly with certified manufacturers to dispatch authentic stocks.</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:16px;">
+            <div style="width:44px; height:44px; border-radius:50%; background:var(--accent-light); color:var(--accent); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            </div>
+            <div>
+              <h4 style="font-size:0.95rem; font-weight:700; margin-bottom:4px; color:var(--ink);">Pharmacist Advisory</h4>
+              <p style="font-size:0.82rem; color:var(--ink-soft); line-height:1.5;">Got side effects queries? Talk to our on-duty pharmacists instantly.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Help & Refills Banner -->
+      <section class="reveal m-refills-banner" style="background:var(--accent); color:#fff; padding:44px 38px; border-radius:2px; margin-bottom: 72px; display:flex; justify-content:space-between; align-items:center; gap:32px; flex-wrap:wrap; position:relative; overflow:hidden;">
+        <span aria-hidden="true" style="position:absolute; right:-20px; bottom:-30px; font-size:120px; font-weight:800; color:rgba(255,255,255,0.06); font-family:sans-serif;">+</span>
+        <div style="flex:1; min-width:280px; z-index:2;">
+          <h3 style="font-size:1.35rem; font-weight:700; margin-bottom:6px; letter-spacing:-0.015em;">Need Automatic Monthly Refills?</h3>
+          <p style="font-size:0.88rem; color:rgba(255,255,255,0.85); line-height:1.6; max-width:54ch;">Submit your healthcare schedule in our portal to set up automated shipping reminders and consult checks.</p>
+        </div>
+        <div style="z-index:2; display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="../auth/signup.html" class="m-btn solid" style="background:#fff; color:var(--accent); border-color:#fff; font-weight:600; padding:12px 24px;">Setup Refills Now</a>
+          <a href="contact.html" class="m-btn" style="border-color:rgba(255,255,255,0.4); color:#fff; font-weight:500; padding:12px 24px;">Contact Support</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="../../src/js/products.js"></script>
+  <script src="../../src/js/navbar.js"></script>
+  <script src="../../src/js/auth.js"></script>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.getElementById("pricingPeriodToggle");
+      const dot = document.getElementById("pricingPeriodDot");
+      const priceGold = document.getElementById("priceGold");
+      const pricePlat = document.getElementById("pricePlat");
+      const periodGold = document.getElementById("periodGold");
+      const periodPlat = document.getElementById("periodPlat");
+
+      let isYearly = false;
+
+      if (toggle && dot) {
+        toggle.addEventListener("click", () => {
+          isYearly = !isYearly;
+          if (isYearly) {
+            dot.style.transform = "translateX(24px)";
+            if (priceGold) priceGold.innerText = "$7.99";
+            if (pricePlat) pricePlat.innerText = "$19.99";
+            if (periodGold) periodGold.innerText = "/ month (billed annually)";
+            if (periodPlat) periodPlat.innerText = "/ month (billed annually)";
+          } else {
+            dot.style.transform = "translateX(0)";
+            if (priceGold) priceGold.innerText = "$9.99";
+            if (pricePlat) pricePlat.innerText = "$24.99";
+            if (periodGold) periodGold.innerText = "/ month";
+            if (periodPlat) periodPlat.innerText = "/ month";
+          }
+        });
+      }
+    });
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="root-path" content="../../">
+  <title>Meridian — Register Account</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../src/css/style.css">
+</head>
+
+<body>
+
+  <main class="m-auth-wrap" style="flex-direction:column; gap:48px; max-width:680px; margin:0 auto; width:100%;">
+    <div class="m-auth-card"
+      style="border: 1px solid var(--line-strong); background:var(--card); border-top: 3.5px solid var(--accent); width:100%;">
+      <div class="m-auth-head">
+        <a href="../../index.html" class="m-logo" style="justify-content:center; margin-bottom:12px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+            style="color:var(--accent);flex-shrink:0;">
+            <path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" />
+          </svg>
+          Meridian<span>.</span>
+        </a>
+        <h1 style="font-size:1.55rem; font-weight:800; letter-spacing:-0.025em; margin-bottom:4px; color:var(--ink);">
+          Register Care Account</h1>
+        <p style="font-size:0.83rem; color:var(--ink-soft); line-height:1.4;">Sign up to manage prescriptions, track
+          order shipping, and check copays.</p>
+      </div>
+
+      <!-- Signup Form -->
+      <form id="signupForm" style="display:flex;flex-direction:column;gap:18px;">
+        <div>
+          <label class="m-label" for="signupName">Full Name</label>
+          <input type="text" id="signupName" class="m-input" placeholder="e.g. John Doe" required>
+        </div>
+
+        <div>
+          <label class="m-label" for="signupEmail">Email Address</label>
+          <input type="email" id="signupEmail" class="m-input" placeholder="name@domain.com" required>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+          <div>
+            <label class="m-label" for="signupPassword">Password</label>
+            <input type="password" id="signupPassword" class="m-input" placeholder="••••••••" required>
+          </div>
+          <div>
+            <label class="m-label" for="signupRole">Account Type</label>
+            <div style="position:relative;">
+              <select id="signupRole" class="m-select" required>
+                <option value="user">Patient (User)</option>
+                <option value="admin">Pharmacist (Admin)</option>
+              </select>
+              <span
+                style="position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;font-size:0.6rem;color:var(--ink-soft);">▼</span>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;margin-top:8px;">
+          Create Account →
+        </button>
+      </form>
+
+      <!-- Toggle Link -->
+      <div style="text-align:center;margin-top:20px;font-size:0.85rem;">
+        <p style="color:var(--ink-soft);">Already registered? <a href="login.html"
+            style="color:var(--ink);font-weight:600;text-decoration:underline;">Log in here</a></p>
+      </div>
+    </div>
+  </main>
+
+  <script src="../../src/js/products.js"></script>
+  <script src="../../src/js/auth.js"></script>
+</body>
+
+</html>

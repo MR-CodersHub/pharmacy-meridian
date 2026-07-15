@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="root-path" content="./">
+<meta name="description" content="Meridian — Licensed online pharmacy. Upload a prescription and get your medication reviewed by a registered pharmacist and delivered to your door.">
+<title>Meridian — Licensed online pharmacy</title>
+<link rel="stylesheet" href="src/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="navbar-container"></div>
+
+<!-- ══ HERO ══════════════════════════════════════════ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+
+      <!-- Left: Copy -->
+      <div class="hero-left reveal">
+        <span class="eyebrow">Licensed Pharmacy · Reg. No. MP-2291</span>
+        <h1>Prescription medicines, handled with <em>care.</em></h1>
+
+        <div class="hero-btns">
+          <a href="#" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Upload prescription
+          </a>
+          <a href="#shop" class="btn-outline">
+            Browse medicines
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="trust-badges">
+          <div class="trust-badge">
+            <div class="trust-badge-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l7 4v6c0 5-3.4 8-7 10-3.6-2-7-5-7-10V6l7-4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </div>
+            <span>Licensed<br>Pharmacy</span>
+          </div>
+          <div class="trust-badge">
+            <div class="trust-badge-icon">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <span>Pharmacist<br>Reviewed</span>
+          </div>
+          <div class="trust-badge">
+            <div class="trust-badge-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/></svg>
+            </div>
+            <span>Genuine<br>Medicines</span>
+          </div>
+          <div class="trust-badge">
+            <div class="trust-badge-icon">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <span>Secure &amp;<br>Private</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Image collage -->
+      <div class="hero-right">
+        <div class="hero-dots"></div>
+        <div class="hero-blob"></div>
+        <div class="hero-blob-2"></div>
+        <img class="hero-img-main"
+             src="assets/hero-collage.png"
+             alt="Prescription medicines and pharmacy products"
+             loading="eager">
+        <!-- Verified stamp -->
+        <div class="hero-stamp">
+          <div class="hero-stamp-inner">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/></svg>
+            <span class="hero-stamp-text">Pharmacist<br>Verified</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ CATEGORIES ══════════════════════════════════════ -->
+<section id="shop" style="padding:80px 0;border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head-row reveal">
+      <div>
+        <span class="section-label">Shop by Category</span>
+        <h2>Everything for your health, in one place.</h2>
+      </div>
+      <a href="./public/pages/products.html" class="view-all-link">
+        View all categories
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <div class="cat-scroll reveal">
+      <!-- Pain & fever relief -->
+      <div class="cat-item">
+        <div class="cat-circle">
+          <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80" alt="Pain & fever relief">
+        </div>
+        <span class="cat-name">Pain &amp; fever relief</span>
+        <span class="cat-sub">Tablets, syrups, gels</span>
+      </div>
+      <!-- Heart & blood pressure -->
+      <div class="cat-item">
+        <div class="cat-circle">
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=400&q=80" alt="Heart & blood pressure">
+        </div>
+        <span class="cat-name">Heart &amp; blood pressure</span>
+        <span class="cat-sub">Monitors, medication</span>
+      </div>
+      <!-- Vitamins & wellness -->
+      <div class="cat-item">
+        <div class="cat-circle">
+          <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?auto=format&fit=crop&w=400&q=80" alt="Vitamins & wellness">
+        </div>
+        <span class="cat-name">Vitamins &amp; wellness</span>
+        <span class="cat-sub">Supplements, immunity</span>
+      </div>
+      <!-- Baby & maternal care -->
+      <div class="cat-item">
+        <div class="cat-circle">
+          <img src="./assets/babycare.jpg" alt="Baby & maternal care">
+        </div>
+        <span class="cat-name">Baby &amp; maternal care</span>
+        <span class="cat-sub">Feeding, hygiene, care</span>
+      </div>
+      <!-- Skin & personal care -->
+      <div class="cat-item">
+        <div class="cat-circle">
+          <img src="./assets/skincare.jpg" alt="Skin & personal care">
+        </div>
+        <span class="cat-name">Skin &amp; personal care</span>
+        <span class="cat-sub">Daily skin essentials</span>
+      </div>
+      <!-- Diabetes care -->
+      <div class="cat-item">
+        <div class="cat-circle">
+          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=400&q=80" alt="Diabetes care">
+        </div>
+        <span class="cat-name">Diabetes care</span>
+        <span class="cat-sub">Devices, test strips</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRUSTED MEDICINES ════════════════════════════════ -->
+<section style="padding:80px 0;border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head-row reveal">
+      <div>
+        <span class="section-label">Trusted Medicines</span>
+        <h2>Fast reorders for what you already trust.</h2>
+      </div>
+      <a href="./public/pages/products.html" class="view-all-link">
+        View full catalog
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <div class="prod-scroll reveal">
+      <!-- Card 1 -->
+      <div class="prod-card-new" onclick="addToCart('paracetamol-500')">
+        <div class="prod-img-wrap">
+          <div class="prod-rx-tag mono">OTC</div>
+          <img src="https://images.unsplash.com/photo-1550572017-edd951b55104?auto=format&fit=crop&w=500&q=80" alt="Paracetamol">
+        </div>
+        <div class="prod-body">
+          <span class="prod-brand">Pain care</span>
+          <div class="prod-name-new">Paracetamol 500mg</div>
+          <div class="prod-desc-new">15 tablets</div>
+          <div class="prod-foot-new">
+            <div>
+              <span class="prod-price-new">₹45</span>
+              <span class="prod-unit-new">PER STRIP</span>
+            </div>
+            <button class="prod-add-btn mono">ADD +</button>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="prod-card-new" onclick="addToCart('blood-pressure-monitor')">
+        <div class="prod-img-wrap">
+          <div class="prod-rx-tag mono">RX REQUIRED</div>
+          <img src="https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&w=500&q=80" alt="Blood Pressure Monitor">
+        </div>
+        <div class="prod-body">
+          <span class="prod-brand">Cardio</span>
+          <div class="prod-name-new">BP Monitor Digital</div>
+          <div class="prod-desc-new">Upper arm, Bluetooth</div>
+          <div class="prod-foot-new">
+            <div>
+              <span class="prod-price-new">₹1,890</span>
+              <span class="prod-unit-new">ONE UNIT</span>
+            </div>
+            <button class="prod-add-btn mono">ADD +</button>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="prod-card-new" onclick="addToCart('baby-lotion-gentle')">
+        <div class="prod-img-wrap">
+          <div class="prod-rx-tag mono">OTC</div>
+          <img src="./assets/baby-lotion.jpg" alt="Baby Lotion">
+        </div>
+        <div class="prod-body">
+          <span class="prod-brand">Baby care</span>
+          <div class="prod-name-new">Johnson's CottonTouch</div>
+          <div class="prod-desc-new">Baby lotion, 200ml</div>
+          <div class="prod-foot-new">
+            <div>
+              <span class="prod-price-new">₹310</span>
+              <span class="prod-unit-new">PER JAR</span>
+            </div>
+            <button class="prod-add-btn mono">ADD +</button>
+          </div>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="prod-card-new" onclick="addToCart('amoxicillin-500')">
+        <div class="prod-img-wrap">
+          <div class="prod-rx-tag mono">RX REQUIRED</div>
+          <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=500&q=80" alt="Amoxicillin">
+        </div>
+        <div class="prod-body">
+          <span class="prod-brand">Endocrine</span>
+          <div class="prod-name-new">Amoxicillin 500mg</div>
+          <div class="prod-desc-new">10 capsules</div>
+          <div class="prod-foot-new">
+            <div>
+              <span class="prod-price-new">₹186</span>
+              <span class="prod-unit-new">PER STRIP</span>
+            </div>
+            <button class="prod-add-btn mono">ADD +</button>
+          </div>
+        </div>
+      </div>
+      <!-- Card 5 -->
+      <div class="prod-card-new" onclick="addToCart('pulse-oximeter')">
+        <div class="prod-img-wrap">
+          <div class="prod-rx-tag mono">OTC</div>
+          <img src="https://images.unsplash.com/photo-1584017911766-d451b3d0e843?auto=format&fit=crop&w=500&q=80" alt="Pulse Oximeter">
+        </div>
+        <div class="prod-body">
+          <span class="prod-brand">Devices</span>
+          <div class="prod-name-new">Pulse Oximeter</div>
+          <div class="prod-desc-new">Fingertip SpO2 monitor</div>
+          <div class="prod-foot-new">
+            <div>
+              <span class="prod-price-new">₹349</span>
+              <span class="prod-unit-new">ONE UNIT</span>
+            </div>
+            <button class="prod-add-btn mono">ADD +</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ═════════════════════════════════════ -->
+<section id="how" style="padding:80px 0;border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="how-grid">
+      <!-- Left: steps -->
+      <div class="how-left reveal">
+        <span class="section-label">How it works</span>
+        <h2>Three checks, every prescription.</h2>
+        <div class="how-steps">
+          <div class="how-step">
+            <span class="how-num">01</span>
+            <div class="how-step-body">
+              <h3>Upload prescription</h3>
+              <p>Upload your prescription photo or type the medicine name. Our system securely stores your details.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <span class="how-num">02</span>
+            <div class="how-step-body">
+              <h3>Pharmacist review</h3>
+              <p>A licensed pharmacist verifies your prescription, checks dosage and interactions, and authorises it.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <span class="how-num">03</span>
+            <div class="how-step-body">
+              <h3>Packed &amp; delivered</h3>
+              <p>Genuine medicines are packed safely and delivered to your doorstep in temperature-controlled packaging.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: pharmacist image -->
+      <div class="how-right reveal" style="transition-delay:.15s;">
+        <img src="assets/pharmacist.png" alt="Licensed pharmacist reviewing a prescription">
+        <div class="how-right-badge">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/></svg>
+          <div>
+            <strong>Your health is our priority.</strong>
+            <span>Every order goes through a 3-step pharmacist verification</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STATS / TESTIMONIAL ══════════════════════════════ -->
+<div class="stats-section">
+  <div class="wrap">
+    <div class="stats-grid-wrap">
+      <!-- Testimonial -->
+      <div class="testimonial-wrap reveal">
+        <blockquote>"They flagged an interaction with something I was already taking, before it even shipped. First time a pharmacy actually caught that."</blockquote>
+        <div class="testimonial-who">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/></svg>
+          Anjali R. — Verified customer
+        </div>
+      </div>
+      <!-- Stats -->
+      <div class="reveal" style="transition-delay:.1s;">
+        <div class="stats-numbers">
+          <div class="stat-cell">
+            <div class="stat-big stat-big-accent">98%</div>
+            <div class="stat-lbl">Orders verified<br>by pharmacists</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-big">30<small style="font-size:1.2rem;">min</small></div>
+            <div class="stat-lbl">Average pharmacist<br>review time</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-big stat-big-accent">4.8<small style="font-size:1.2rem;">/5</small></div>
+            <div class="stat-lbl">★★★★★<br>Customer rating</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-big">1M<small style="font-size:1.4rem;">+</small></div>
+            <div class="stat-lbl">Happy<br>customers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NEWSLETTER ═══════════════════════════════════════ -->
+<div class="news-section">
+  <div class="wrap">
+    <div class="news-inner">
+      <div class="news-text reveal">
+        <h3>Refill reminders, not spam</h3>
+        <p>Get reminders for your medicines and health tips from our pharmacists.</p>
+      </div>
+      <form class="news-form-new reveal" style="transition-delay:.1s;" id="newsletterFooterForm" onsubmit="event.preventDefault();">
+        <input type="email" id="newsletterEmailInput" placeholder="you@email.com" required>
+        <button type="submit" class="mono">Notify me</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="footer-container"></div>
+
+<script src="src/js/products.js"></script>
+<script src="src/js/navbar.js"></script>
+<script src="src/js/auth.js"></script>
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  revealEls.forEach(el => { if (!el.classList.contains('in')) io.observe(el); });
+
+  // Product add buttons
+  document.querySelectorAll('.prod-add-btn').forEach((btn, i) => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const card = btn.closest('.prod-card-new');
+      if (!card) return;
+      const onclick = card.getAttribute('onclick');
+      if (onclick) eval(onclick);
+    });
+  });
+</script>
+</body>
+</html>
