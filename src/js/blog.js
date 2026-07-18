@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="prod-card-new" onclick="window.location.href='${rootPath}public/pages/product-details.html?id=${p.id}'">
           <div class="prod-img-wrap">
             <div class="prod-rx-tag mono">${p.prescriptionRequired ? 'RX REQUIRED' : 'OTC'}</div>
-            <img src="${p.image}" alt="${p.name}">
+            <img src="${p.image}" alt="${p.name}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80';">
           </div>
           <div class="prod-body">
             <span class="prod-brand">${p.category}</span>
@@ -113,8 +113,15 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("productDetailInstructions").innerText = product.instructions;
     document.getElementById("productDetailPrecautions").innerText = product.precautions;
     document.getElementById("productDetailPrice").innerText = `₹${product.price.toFixed(2)}`;
-    document.getElementById("productDetailImg").setAttribute("src", product.image);
-    document.getElementById("productDetailImg").setAttribute("alt", product.name);
+    const detailImg = document.getElementById("productDetailImg");
+    if (detailImg) {
+      detailImg.setAttribute("src", product.image);
+      detailImg.setAttribute("alt", product.name);
+      detailImg.onerror = function() {
+        this.onerror = null;
+        this.src = 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80';
+      };
+    }
 
     if (product.prescriptionRequired) {
       const rxBadge = document.getElementById("productDetailRxBadge");
@@ -226,7 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
       gridContainer.innerHTML = filteredBlogs.map(blog => `
         <div class="m-blog-card" style="border:1px solid var(--line);padding:0;background:var(--card);display:flex;flex-direction:column;cursor:pointer;" onclick="window.location.href='${rootPath}public/pages/blog-details.html?id=${blog.id}'">
           <div style="height:180px;overflow:hidden;position:relative;">
-            <img src="${blog.image}" alt="${blog.title}" style="width:100%;height:100%;object-fit:cover;transition:transform .3s;" class="blog-card-img" />
+            <img src="${blog.image}" alt="${blog.title}" style="width:100%;height:100%;object-fit:cover;transition:transform .3s;" class="blog-card-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1584017911766-d451b3d0e843?auto=format&fit=crop&w=600&q=80';" />
             <span class="m-blog-tag" style="position:absolute;top:12px;left:12px;background:rgba(255,255,255,0.92);border:1px solid var(--line-strong);font-family:'JetBrains Mono',monospace;font-size:0.58rem;padding:2px 7px;color:var(--ink-soft);">${blog.category}</span>
           </div>
           <div style="padding:20px 22px;flex:1;display:flex;flex-direction:column;gap:8px;">
@@ -258,8 +265,15 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("blogDetailCategory").innerText = blog.category;
     document.getElementById("blogDetailTitle").innerText = blog.title;
     document.getElementById("blogDetailMeta").innerText = `Published by ${blog.author} on ${blog.date}`;
-    document.getElementById("blogDetailImage").setAttribute("src", blog.image);
-    document.getElementById("blogDetailImage").setAttribute("alt", blog.title);
+    const blogDetailImg = document.getElementById("blogDetailImage");
+    if (blogDetailImg) {
+      blogDetailImg.setAttribute("src", blog.image);
+      blogDetailImg.setAttribute("alt", blog.title);
+      blogDetailImg.onerror = function() {
+        this.onerror = null;
+        this.src = 'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?auto=format&fit=crop&w=600&q=80';
+      };
+    }
     document.getElementById("blogDetailContent").innerText = blog.content;
 
     const tagsContainer = document.getElementById("blogDetailTags");
@@ -276,7 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const otherBlogs = (window.medPlusBlogs || []).filter(b => b.id !== blog.id).slice(0, 3);
       sidebarContainer.innerHTML = otherBlogs.map(ob => `
         <a href="${rootPath}public/pages/blog-details.html?id=${ob.id}" class="m-sidebar-link" style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--line);text-decoration:none;">
-          <img src="${ob.image}" alt="${ob.title}" style="width:48px;height:48px;object-fit:cover;flex-shrink:0;" />
+          <img src="${ob.image}" alt="${ob.title}" style="width:48px;height:48px;object-fit:cover;flex-shrink:0;" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1584017911766-d451b3d0e843?auto=format&fit=crop&w=600&q=80';" />
           <div style="min-width:0;flex:1;">
             <h4 style="font-size:0.85rem;font-weight:600;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:4px;line-height:1.35;">${ob.title}</h4>
             <span style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;color:var(--ink-faint);">${ob.date}</span>

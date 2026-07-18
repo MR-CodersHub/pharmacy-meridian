@@ -1,7 +1,7 @@
 // Meridian Shared Layout System (Navbar, Footer, Cart Drawer, Modal)
 // Theme: matches index.html editorial design — Inter + JetBrains Mono, bone bg, ink text, green accent
 
-document.addEventListener("DOMContentLoaded", () => {
+function initNavbar() {
   // 1. Detect relative root path prefix
   const rootPath = document.querySelector('meta[name="root-path"]')?.getAttribute('content') || './';
 
@@ -86,10 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
                   <strong id="dropdownUsername"></strong>
                   <span id="dropdownRoleTag" class="m-role-tag">USER</span>
                 </div>
-                <a id="dashboardRedirectLink" href="#" class="m-dropdown-item">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.6"/></svg>
-                  My Dashboard
-                </a>
                 <button id="navbarLogoutBtn" class="m-dropdown-item danger">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   Sign out
@@ -316,6 +312,130 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  // ─── TOAST NOTIFICATION SYSTEM ───────────────────────────────────
+  // Inject toast styles once
+  if (!document.getElementById('m-toast-style')) {
+    const toastStyle = document.createElement('style');
+    toastStyle.id = 'm-toast-style';
+    toastStyle.textContent = `
+      #m-toast-container {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        pointer-events: none;
+      }
+      .m-toast {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--ink);
+        color: var(--bone);
+        padding: 12px 18px;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.84rem;
+        font-weight: 500;
+        border-left: 3px solid var(--accent);
+        box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+        min-width: 240px;
+        max-width: 340px;
+        pointer-events: all;
+        opacity: 0;
+        transform: translateX(20px);
+        transition: opacity 0.28s ease, transform 0.28s ease;
+      }
+      .m-toast.show {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .m-toast.hide {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      .m-toast-icon {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .m-toast-icon svg {
+        width: 11px;
+        height: 11px;
+        color: #fff;
+      }
+      .m-toast-close {
+        margin-left: auto;
+        background: none;
+        border: none;
+        color: rgba(255,255,255,0.4);
+        cursor: pointer;
+        font-size: 1rem;
+        line-height: 1;
+        padding: 0 0 0 8px;
+        transition: color 0.2s;
+        pointer-events: all;
+      }
+      .m-toast-close:hover { color: rgba(255,255,255,0.9); }
+      [data-theme="dark"] .m-toast {
+        background: #1A2030;
+        box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+      }
+      @media (max-width: 480px) {
+        #m-toast-container {
+          bottom: 16px;
+          right: 16px;
+          left: 16px;
+        }
+        .m-toast { min-width: unset; max-width: 100%; }
+      }
+    `;
+    document.head.appendChild(toastStyle);
+  }
+
+  // Ensure toast container exists
+  if (!document.getElementById('m-toast-container')) {
+    const tc = document.createElement('div');
+    tc.id = 'm-toast-container';
+    document.body.appendChild(tc);
+  }
+
+  window.showToast = function(message, duration = 2500) {
+    const container = document.getElementById('m-toast-container');
+    if (!container) return;
+
+    const toast = document.createElement('div');
+    toast.className = 'm-toast';
+    toast.innerHTML = `
+      <div class="m-toast-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <span>${message}</span>
+      <button class="m-toast-close" aria-label="Dismiss notification">&times;</button>
+    `;
+    container.appendChild(toast);
+
+    // Animate in
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => toast.classList.add('show'));
+    });
+
+    const dismiss = () => {
+      toast.classList.add('hide');
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 300);
+    };
+
+    toast.querySelector('.m-toast-close').addEventListener('click', dismiss);
+    setTimeout(dismiss, duration);
+  };
+
   window.addToCart = function (productId) {
     const product = window.medPlusProducts?.find(p => p.id === productId);
     if (!product) return;
@@ -336,7 +456,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     localStorage.setItem("medplus-cart", JSON.stringify(window.medPlusCart));
     window.updateCartUI();
-    toggleCart(true);
+    // Show subtle toast instead of opening cart drawer
+    window.showToast(`<strong>${product.name}</strong> added to cart`);
   };
 
   window.changeCartQty = function (index, delta) {
@@ -514,4 +635,10 @@ document.addEventListener("DOMContentLoaded", () => {
       revealEls.forEach(el => el.classList.add('in'));
     }
   }
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initNavbar);
+} else {
+  initNavbar();
+}

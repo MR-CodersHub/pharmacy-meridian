@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="root-path" content="../../">
+  <meta name="description" content="Sign in to your Meridian Care Portal to manage prescriptions, track orders, and access pharmacist consultations.">
   <title>Meridian — Clinical Portal Login</title>
   <link rel="icon" href="../../assets/favicon.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,43 +14,68 @@
 </head>
 <body>
 
-  <main class="m-auth-wrap" style="flex-direction:column; gap:48px; max-width:680px; margin:0 auto; width:100%;">
-    <div class="m-auth-card" style="border: 1px solid var(--line-strong); background:var(--card); border-top: 3.5px solid var(--accent); width:100%;">
-      <div class="m-auth-head">
-        <a href="../../index.html" class="m-logo" style="justify-content:center; margin-bottom:12px;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="color:var(--accent);flex-shrink:0;"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></svg>
-          Meridian<span>.</span>
-        </a>
-        <h1 style="font-size:1.55rem; font-weight:800; letter-spacing:-0.025em; margin-bottom:4px; color:var(--ink);">Log In Care Portal</h1>
-        <p style="font-size:0.83rem; color:var(--ink-soft); line-height:1.4;">Access your wellness prescriptions, refills checklist, and clinician chat logs.</p>
-      </div>
+  <div id="navbar-container"></div>
 
-      <!-- Login Form -->
-      <form id="loginForm" style="display:flex;flex-direction:column;gap:16px;">
-        <div>
-          <label for="loginEmail" class="m-label">Care Email Address</label>
-          <input type="email" id="loginEmail" class="m-input" required placeholder="user@meridian.com">
+  <main class="m-auth-wrap" style="flex-direction:column; gap:0; padding-top:120px; padding-bottom:80px; min-height:100vh;">
+    <div style="width:100%; max-width:480px; margin:0 auto; padding:0 24px;">
+
+      <div class="m-auth-card" style="border: 1px solid var(--line-strong); background:var(--card); border-top: 3.5px solid var(--accent); width:100%;">
+        <div class="m-auth-head">
+          <a href="../../index.html" class="m-logo" style="justify-content:center; margin-bottom:18px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="color:var(--accent);flex-shrink:0;"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/></svg>
+            Meridian<span>.</span>
+          </a>
+          <h1 style="font-size:1.55rem; font-weight:800; letter-spacing:-0.025em; margin-bottom:6px; color:var(--ink);">Welcome back</h1>
+          <p style="font-size:0.86rem; color:var(--ink-soft); line-height:1.5;">Access your wellness prescriptions, refills checklist, and clinician chat logs.</p>
         </div>
 
-        <div>
-          <label for="loginPassword" class="m-label">Password</label>
-          <input type="password" id="loginPassword" class="m-input" required placeholder="••••••••">
+        <!-- Login Form -->
+        <form id="loginForm" style="display:flex;flex-direction:column;gap:0;" novalidate>
+          <div class="m-field">
+            <label for="loginEmail" class="m-label">Care Email Address</label>
+            <input type="email" id="loginEmail" class="m-input" required placeholder="user@meridian.com" autocomplete="email">
+          </div>
+
+          <div class="m-field">
+            <label for="loginPassword" class="m-label">Password</label>
+            <input type="password" id="loginPassword" class="m-input" required placeholder="••••••••" autocomplete="current-password">
+          </div>
+
+          <div style="display:flex; align-items:center; justify-content:flex-end; margin-bottom:20px;">
+            <a href="#" style="font-size:0.8rem; color:var(--accent); font-weight:500;">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn-primary" id="loginSubmitBtn" style="width:100%;justify-content:center;padding:14px 20px;">
+            Verify Credentials →
+          </button>
+        </form>
+
+        <!-- Divider -->
+        <div style="display:flex;align-items:center;gap:12px;margin:24px 0;">
+          <hr style="flex:1;border:none;border-top:1px solid var(--line);">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--ink-faint);letter-spacing:0.04em;">OR</span>
+          <hr style="flex:1;border:none;border-top:1px solid var(--line);">
         </div>
 
-        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;margin-top:8px;">
-          Verify Credentials →
-        </button>
-      </form>
-
-      <!-- Toggle Link -->
-      <div style="text-align:center;margin-top:20px;font-size:0.85rem;">
-        <p style="color:var(--ink-soft);">Don't have a health account? <a href="signup.html" style="color:var(--ink);font-weight:600;text-decoration:underline;">Register here</a></p>
+        <!-- Toggle Link -->
+        <div style="text-align:center;font-size:0.86rem;">
+          <p style="color:var(--ink-soft);">Don't have a health account? <a href="signup.html" style="color:var(--accent);font-weight:600;">Register here →</a></p>
+        </div>
       </div>
+
+      <!-- Info Note -->
+      <div class="m-auth-info" style="margin-top:20px;">
+        <strong>🔒 Secure & Private</strong> — Your login is protected with AES-256 encryption. We never share your health data with third parties.
+      </div>
+
     </div>
   </main>
 
+  <div id="footer-container"></div>
 
   <script src="../../src/js/products.js"></script>
+  <script src="../../src/js/navbar.js"></script>
   <script src="../../src/js/auth.js"></script>
+  <script src="../../src/js/form-validation.js"></script>
 </body>
 </html>

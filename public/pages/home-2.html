@@ -95,6 +95,21 @@
       background: transparent;
       color: var(--ink);
     }
+    .chat-attach-btn {
+      border: none;
+      background: none;
+      padding: 0 16px;
+      color: var(--ink-soft);
+      cursor: pointer;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border-right: 1px solid var(--line);
+    }
+    .chat-attach-btn:hover { color: var(--accent); }
+    .chat-attach-btn svg { width: 16px; height: 16px; display: block; }
     .chat-send-btn {
       border: none;
       border-left: 1px solid var(--line);
@@ -144,8 +159,8 @@
             <span class="m-pill-tag green">Licensed Rx</span>
           </div>
 
-          <a href="#pharmacist-chat" class="btn-primary">
-            Start Live Consultation
+          <a href="./services.html" class="btn-primary">
+            Browse Medicines
           </a>
         </div>
 
@@ -177,6 +192,13 @@
 
             <!-- Chat Input -->
             <form id="chatConsoleInputForm" class="chat-input-row">
+              <!-- Attachment button -->
+              <button type="button" class="chat-attach-btn" id="chatAttachBtn" aria-label="Attach file" title="Attach prescription or document">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/>
+                </svg>
+              </button>
+              <input type="file" id="chatFileInput" style="display:none;" accept="image/*,.pdf,.doc,.docx">
               <input type="text" id="chatConsoleMessageInput" placeholder="Type your query here..." required autocomplete="off">
               <button type="submit" class="chat-send-btn">SEND</button>
             </form>
@@ -294,6 +316,23 @@
             renderMessage(reply, "bot");
           }, 800);
         });
+
+        // Attachment button logic
+        const attachBtn = document.getElementById('chatAttachBtn');
+        const fileInput = document.getElementById('chatFileInput');
+        if (attachBtn && fileInput) {
+          attachBtn.addEventListener('click', () => fileInput.click());
+          fileInput.addEventListener('change', () => {
+            const file = fileInput.files[0];
+            if (!file) return;
+            const sizeKB = (file.size / 1024).toFixed(1);
+            renderMessage(`📎 <em>Attached:</em> <strong>${file.name}</strong> <span style="opacity:0.6;font-size:0.78em;">(${sizeKB} KB)</span>`, "user");
+            setTimeout(() => {
+              renderMessage(`Thank you for attaching <strong>${file.name}</strong>. Our pharmacist will review it and get back to you within 30 minutes. You can also upload it directly from your Patient Cabinet for faster processing.`, "bot");
+            }, 900);
+            fileInput.value = ''; // reset
+          });
+        }
       }
 
       function renderMessage(text, sender) {

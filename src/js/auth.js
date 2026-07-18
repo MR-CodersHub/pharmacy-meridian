@@ -1,6 +1,6 @@
 // MedPlus User Authentication and Access Control System
 
-document.addEventListener("DOMContentLoaded", () => {
+function initAuth() {
   const rootPath = document.querySelector('meta[name="root-path"]')?.getAttribute('content') || './';
 
   // Seed default admin and user if not already in localStorage
@@ -81,4 +81,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Authentication security check removed as requested
     console.log("Authentication checks bypassed for dashboard page.");
   }
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initAuth);
+} else {
+  initAuth();
+}

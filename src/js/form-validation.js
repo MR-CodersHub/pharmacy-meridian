@@ -1,6 +1,6 @@
 // Meridian Interactive Form Validation and Alerts System
 
-document.addEventListener("DOMContentLoaded", () => {
+function initFormValidation() {
   // 1. Email Format Validator Helper
   function isValidEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -190,7 +190,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Validate File upload
       if (!fileInput || fileInput.files.length === 0) {
-        alert("Please upload or drag & drop your prescription file (Image or PDF).");
+        if (fileNameDisplay) {
+          fileNameDisplay.innerText = "Please upload your prescription file.";
+          fileNameDisplay.style.color = "#c0392b";
+          fileNameDisplay.style.fontWeight = "600";
+        }
+        if (fileDropZone) {
+          fileDropZone.style.borderColor = "#c0392b";
+        }
         hasErrors = true;
       }
 
@@ -223,6 +230,12 @@ document.addEventListener("DOMContentLoaded", () => {
           fileDropZone.style.borderColor = "";
         }
 
+        // Close upload modal if it exists
+        const rxUploadModal = document.getElementById("rxUploadModal");
+        if (rxUploadModal) {
+          rxUploadModal.classList.remove("open");
+        }
+
         if (window.showNotificationModal) {
           window.showNotificationModal(
             "Prescription Received!",
@@ -239,4 +252,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initFormValidation);
+} else {
+  initFormValidation();
+}
